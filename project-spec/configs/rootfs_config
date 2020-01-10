@@ -423,7 +423,7 @@ CONFIG_canutils=y
 #
 # dropbear 
 #
-# CONFIG_dropbear is not set
+CONFIG_dropbear=y
 # CONFIG_dropbear-dev is not set
 # CONFIG_dropbear-dbg is not set
 
@@ -1447,7 +1447,7 @@ CONFIG_run-postinsts=y
 #
 # libgpiod
 #
-# CONFIG_libgpiod is not set
+CONFIG_libgpiod=y
 # CONFIG_libgpiod-dev is not set
 # CONFIG_libgpiod-dbg is not set
 
@@ -2263,7 +2263,7 @@ CONFIG_udev-extraconf=y
 #
 # gcc-runtime 
 #
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 # CONFIG_libstdcPLUSPLUS-dev is not set
 
 #
@@ -3945,6 +3945,7 @@ CONFIG_imagefeature-hwcodecs=y
 #
 # user packages 
 #
+CONFIG_libuio=y
 
 #
 # PetaLinux RootFS Settings
