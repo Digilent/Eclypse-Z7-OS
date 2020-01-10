@@ -27,3 +27,15 @@
 	usb-phy = <&usb_phy0>;
 };
 
+&ZmodDAC_0_AXI_ZmodDAC1411_v1_0_0 {
+	compatible = "generic-uio";
+};
+
+&amba_pl {
+	axidma_chrdev_1: axidma_chrdev@1 {
+		compatible = "xlnx,axidma-chrdev";
+		dmas = <&ZmodDAC_0_axi_dma_1 0>;
+		dma-names = "tx_channel";
+		index = <1>;
+	};
+};
