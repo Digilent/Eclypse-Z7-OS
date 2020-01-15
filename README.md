@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a branch of the Eclypse Z7 board containing the Petalinux project with the Zmod ADC 1410 set in Zmod connector A and Zmod DAC 1411 set in Zmod connector B. Data transfers are facilitated trough the AXI DMA IP provided by Xilinx and with the kernel driver and API from [xilinx_axidma](https://github.com/bperez77/xilinx_axidma) which has been modified using patches inside the Petalinux project. This project is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities. We have provided a ready to use image with a uEnv.txt document which allows the user to switch between hardware / kernel configurations and a Debian 10 rootfs for armv7, found here:~~[SD card image](https://reference.digilentinc.com/vivado/installing-vivado/start)~~
+This is a branch of the Eclypse Z7 board containing the Petalinux project with the Zmod ADC 1410 set in Zmod connector A and Zmod DAC 1411 set in Zmod connector B. Data transfers are facilitated trough the AXI DMA IP provided by Xilinx and with the kernel driver and API from [xilinx_axidma](https://github.com/bperez77/xilinx_axidma) which has been modified using patches inside the Petalinux project. This project is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities. We have provided a ready to use image with a uEnv.txt document which allows the user to switch between hardware / kernel configurations and a Debian 10 rootfs for armv7, found here:[SD card image](https://github.com/Digilent/Eclypse-Z7/releases)
 
 The hardware platform used for this Petalinux project has been imported from the [Hardware repository](https://github.com/Digilent/Eclypse-Z7-HW/tree/zmod_dac/master) of the same branch as this. In order to minimize confusion, currently the commit message of the imported hardware platform contains the commit hash of the exported hardware platform of the aforementioned Hardware repository.
 
@@ -48,7 +48,7 @@ petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --u-boot
 ### Boot the Newly Built Files from SD
 
 Once the build is done, there are two methods to boot the newly built image.
-The first assumes that you are using our prepared ~~[image with Debian 10 rootfs]()~~, in this case you only need to replace the files in the **boot partition** of the SD card with the files located in *\<repo-location\>/images/linux/*.
+The first assumes that you are using our prepared [image with Debian 10 rootfs](https://github.com/Digilent/Eclypse-Z7/releases), in this case you only need to replace the files in the **boot partition** of the SD card with the files located in *\<repo-location\>/images/linux/*.
 
 Alternatively, if you wish to use the the INITRAMFS you will need to first run this command:
 ```
