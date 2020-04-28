@@ -36,6 +36,6 @@
 		compatible = "xlnx,axidma-chrdev";
 		dmas = <&ZmodDAC_0_axi_dma_1 0>;
 		dma-names = "tx_channel";
-		index = <1>;
+		index = <0>;
 	};
 };
