@@ -1,8 +1,8 @@
-# Eclypse Z7 Zmod ADC 1410 Petalinux Project
+# Eclypse Z7 ZmodADC1410 Petalinux Project
 
 ## Description
 
-This is a branch of the Eclypse Z7 board containing the Petalinux project with the Zmod ADC 1410 set in Zmod connector A. Data transfers are facilitated trough the AXI DMA IP provided by Xilinx and with the kernel driver and API from [xilinx_axidma](https://github.com/bperez77/xilinx_axidma) which has been modified using patches inside the Petalinux project. This project is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities. We have provided a ready to use image with a uEnv.txt document which allows the user to switch between hardware / kernel configurations and a Debian 10 rootfs for armv7, found here:[SD card image](https://github.com/Digilent/Eclypse-Z7/releases)
+This is a branch of the Eclypse Z7 board containing the Petalinux project with the ZmodADC1410 plugged into Zmod connector A. Data transfers are facilitated trough the AXI DMA IP provided by Xilinx and with the kernel driver and API from [xilinx_axidma](https://github.com/bperez77/xilinx_axidma) which has been modified using patches inside the Petalinux project. This project is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities. We have provided a ready to use image with a uEnv.txt document which allows the user to switch between hardware / kernel configurations and a Debian 10 rootfs for armv7, found here:[SD card image](https://github.com/Digilent/Eclypse-Z7/releases)
 
 The hardware platform used for this Petalinux project has been imported from the [Hardware repository](https://github.com/Digilent/Eclypse-Z7-HW/tree/zmod_adc/master) of the same branch as this. In order to minimize confusion, currently the commit message of the imported hardware platform contains the commit hash of the exported hardware platform of the aforementioned Hardware repository.
 
@@ -13,7 +13,7 @@ The hardware platform used for this Petalinux project has been imported from the
 ## Requirements
 
 * **Eclypse Z7**
-* **Zmod ADC 1410**
+* **ZmodADC1410**
 * **Petalinux 2019.1**: For installation, please follow the user guide provided by Xilinx [Petalinux Reference Guide (UG1144)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_1/ug1144-petalinux-tools-reference-guide.pdf).
 
 ## Setup
@@ -33,6 +33,7 @@ source /opt/pkg/petalinux/settings.sh
 It is recommended to version control your project and rebuild it with the latest features. In order to do that, clone your repository on the appropriate branch:
 ```
 git clone -b zmod_adc/master --single-branch https://github.com/Digilent/Eclypse-Z7-OS
+git checkout -b topic_branch origin/zmod_adc/master
 ```
 
 ### Build the Petalinux Project
@@ -51,9 +52,10 @@ The first assumes that you are using our prepared [image with Debian 10 rootfs](
 
 Alternatively, if you wish to use the the INITRAMFS you will need to first run this command:
 ```
-petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system_wrapper.bit --u-boot
+petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system.bit --u-boot
 ```
 followed by loading the *\<repo-location\>/images/linux/BOOT.bin* and *\<repo-location\>/images/linux/image.ub* to the **boot partition** of the SD card.
+You must also copy to SD card and remane the system.bit and system.dtb files to: zm-adc.bit and zm-adc.dtb.
 
 ## Next Steps
 
@@ -72,10 +74,10 @@ Some changes to the hardware will require changes to the device-tree in *\<repo-
 
 For information related to Petalinux, please visit [Petalinux Reference Guide (UG1144)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_1/ug1144-petalinux-tools-reference-guide.pdf)
 
-For more information on the Eclypse Z7, visit it's [Eclypse Z7 Resource Center](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/start) on the Digilent Wiki.
+For more information on the Eclypse Z7, visit its [Eclypse Z7 Resource Center](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/start) on the Digilent Wiki.
 
-For more information on the Zmod ADC 1410, please visit it's [Zmod ADC Resource Center](https://reference.digilentinc.com/reference/zmod/zmodadc/start) on the Digilent Wiki.
+For more information on the Zmod ADC 1410, please visit its [Zmod ADC Resource Center](https://reference.digilentinc.com/reference/zmod/zmodadc/start) on the Digilent Wiki.
 
-For more information on how our git and project flow is set up, please refer to [Eclypse Z7 Git Repositoies](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/git).
+For more information on how our git and project flow is set up, please refer to [Eclypse Z7 Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/git).
 
-For technical support or questions, please post on the [Digilent Forum](forum.digilentinc.com).
+For technical support or questions, please post on the [Digilent Forum](https://forum.digilentinc.com).
