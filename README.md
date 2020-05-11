@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a branch of the Eclypse Z7 board containing the Petalinux project which is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities.
+This is the master branch of the Eclypse Z7 board project containing the Petalinux distribution which is currently configured to boot into an INITRAMFS by default which is generated within the project; this however has limited rootfs capabilities.
 
 The hardware platform used for this Petalinux project has been imported from the [Hardware repository](https://github.com/Digilent/Eclypse-Z7-HW/) of the same branch as this.
 
@@ -32,6 +32,7 @@ source /opt/pkg/petalinux/settings.sh
 It is recommended to version control your project and rebuild it with the latest features. In order to do that, clone your repository on the appropriate branch:
 ```
 git clone https://github.com/Digilent/Eclypse-Z7-OS
+git checkout -b topic_branch origin/<specific_git_branch>
 ```
 
 ### Build the Petalinux Project
@@ -40,7 +41,7 @@ Run the following commands to build the Petalinux project with the default optio
 
 ```
 petalinux-build
-petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system_wrapper.bit --u-boot
+petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system.bit --u-boot
 ```
 
 ### Boot the Newly Built Files from SD
@@ -64,6 +65,6 @@ Some changes to the hardware will require changes to the device-tree in *\<repo-
 
 For information related to Petalinux, please visit [Petalinux Reference Guide (UG1144)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_1/ug1144-petalinux-tools-reference-guide.pdf)
 
-For more information on the Eclypse Z7, visit it's [Eclypse Z7 Resource Center](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/start) on the Digilent Wiki.
+For more information on the Eclypse Z7, visit its [Eclypse Z7 Resource Center](https://reference.digilentinc.com/reference/programmable-logic/eclypse-z7/start) on the Digilent Wiki.
 
-For technical support or questions, please post on the [Digilent Forum](forum.digilentinc.com).
+For technical support or questions, please post on the [Digilent Forum](https://forum.digilentinc.com).
