@@ -1,29 +1,24 @@
 /include/ "system-conf.dtsi"
 / {
-	model = "Zynq Zybo Z7 Development Board";
-	compatible = "digilent,zynq-zyboz7", "xlnx,zynq-7000";
-
 	chosen {
-		bootargs = "console=ttyPS0,115200 earlyprintk cma=25M uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait";
+		bootargs = "console=ttyPS0,115200 earlyprintk cma=25M uio_pdrv_genirq.of_id=generic-uio libuio rw rootwait clk_ignore_unused";
 	};
 
-	usb_phy0: usb_phy@0 {
-		compatible = "ulpi-phy";
-		#phy-cells = <0>;
-		reg = <0xe0002000 0x1000>;
-		view-port = <0x0170>;
-		drv-vbus;
+};
+
+&StreamDecimate_0 {
+	compatible = "generic-uio";
+};
+
+&ZmodScopeAXIConfigur_0 {
+	compatible = "generic-uio";
+};
+
+&amba_pl {
+	axidma_chrdev: axidma_chrdev@0 {
+		compatible = "xlnx,axidma-chrdev";
+		dmas = <&axi_dma_0 1>;
+		dma-names = "rx_channel";
+		index = <0>;
 	};
 };
-
-&i2c1 {
-        status = "okay";
-        device-name = "pmcu-i2c";
-};
-
-&usb0 {
-	dr_mode = "host";
-	status 	= "okay";
-	usb-phy = <&usb_phy0>;
-};
-
